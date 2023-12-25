@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-color: #e74c3c;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #fff;
+            color: #e74c3c;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #ccc;
+        }
+
+        .snowflake {
+            position: absolute;
+            font-size: 2em;
+            color: #fff;
+            pointer-events: none;
+            animation: snowfall linear infinite;
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(150vh) rotate(360deg);
+            }
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+
+        #santa {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        #loveMessage {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 1em;
+            text-align: center;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="showPage2()">Click me</button>
+
+    <script>
+        function showPage2() {
+            document.body.innerHTML = '';
+
+            for (let i = 0; i < 5; i++) {
+                createSnowflake();
+            }
+
+            document.body.innerHTML += `
+                <h1>Merry Christmas!</h1>
+                <img id="santa" src="santanithin.png" alt="Santa Claus">
+                <div id="loveMessage">DP loves you this year.</div>
+            `;
+        }
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '&#10052;'; // You can use different snowflake characters
+
+            const randomX = Math.random() * window.innerWidth;
+            const randomY = Math.random() * window.innerHeight;
+
+            snowflake.style.left = `${randomX}px`;
+            snowflake.style.top = `${randomY}px`;
+
+            document.body.appendChild(snowflake);
+        }
+    </script>
+</body>
+</html>
